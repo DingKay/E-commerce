@@ -13,6 +13,7 @@
         <module>e-common</module>
         <module>seller-goods-interface</module>
         <module>seller-goods-service</module>
+        <module>shop-web</module>
     </modules>
 
     <packaging>pom</packaging>
