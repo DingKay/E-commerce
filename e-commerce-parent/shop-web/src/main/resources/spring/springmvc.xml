@@ -21,8 +21,9 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
+    <context:property-placeholder location="classpath:spring/zookeeper.properties"/>
     <!-- 引用dubbo 服务 -->
     <dubbo:application name="shop-web" />
-    <dubbo:registry address="zookeeper://xiaoba.online:2181"/>
+    <dubbo:registry address="${zookeeper.server}"/>
     <dubbo:annotation package="com.dk.shop.controller" />
 </beans>
