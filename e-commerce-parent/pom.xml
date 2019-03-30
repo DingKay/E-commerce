@@ -7,6 +7,9 @@
     <groupId>com.dk.platform</groupId>
     <artifactId>e-commerce-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>e-domain</module>
+    </modules>
 
     <packaging>pom</packaging>
     <!--this pom file only add dependency version information-->
