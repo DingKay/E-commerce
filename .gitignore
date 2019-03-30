@@ -1,0 +1,12 @@
+.idea
+*.iml
+.classpath
+out
+gen
+target
+!pom.xml
+*.properties
+# under * 
+!database.properties
+application.properties
+!log4j.properties
