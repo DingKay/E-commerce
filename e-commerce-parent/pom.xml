@@ -11,6 +11,7 @@
         <module>e-domain</module>
         <module>e-dao</module>
         <module>e-common</module>
+        <module>seller-goods-interface</module>
     </modules>
 
     <packaging>pom</packaging>
