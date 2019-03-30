@@ -200,6 +200,7 @@
                 <groupId>org.jasig.cas.client</groupId>
                 <artifactId>cas-client-core</artifactId>
                 <version>3.3.3</version>
+                <!--排除log4j冲突-->
                 <exclusions>
                     <exclusion>
                         <groupId>org.slf4j</groupId>
