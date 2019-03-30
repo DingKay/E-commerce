@@ -9,6 +9,8 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>e-domain</module>
+        <module>e-dao</module>
+        <module>e-common</module>
     </modules>
 
     <packaging>pom</packaging>
