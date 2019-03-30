@@ -7,6 +7,10 @@
     <groupId>com.dk.platform</groupId>
     <artifactId>e-commerce-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>../e-commerce-dao</module>
+        <module>../e-commerce-domain</module>
+    </modules>
     <packaging>pom</packaging>
     <!--this pom file only add dependency version information-->
     <properties>
