@@ -1,8 +1,8 @@
 package com.dk.sellergoods.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.dk.dao.TbBrandMapper;
 import com.dk.domain.TbBrand;
-import com.dk.mapper.TbBrandMapper;
 import com.dk.sellergoods.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -33,6 +33,7 @@ public class BrandServiceImpl implements BrandService {
       */
     @Override
     public List<TbBrand> findAll() {
+        System.out.println("BrandServiceImpl.findAll");
         //调用mapper里面的方法查询所有品牌, null代表查询所有。
         List<TbBrand> tbBrands = tbBrandMapper.selectByExample(null);
         return tbBrands;

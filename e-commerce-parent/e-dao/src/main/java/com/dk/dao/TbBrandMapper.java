@@ -1,4 +1,4 @@
-package com.dk.mapper;
+package com.dk.dao;
 
 import com.dk.domain.TbBrand;
 import com.dk.domain.TbBrandExample;

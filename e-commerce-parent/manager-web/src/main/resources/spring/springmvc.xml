@@ -26,4 +26,5 @@
     <dubbo:application name="manager-web" />
     <dubbo:registry address="${zookeeper.server}"/>
     <dubbo:annotation package="com.dk.manager.controller" />
+    <dubbo:provider delay="-1" timeout="6000" retries="0"/>
 </beans>

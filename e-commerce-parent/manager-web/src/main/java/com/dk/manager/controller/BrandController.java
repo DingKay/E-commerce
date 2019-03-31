@@ -32,7 +32,9 @@ public class BrandController {
       * @Param null
       * @return List<TbBrand>
       */
+    @RequestMapping("/findAll")
     public List<TbBrand> findAllBrand(){
+        System.out.println("BrandController.findAllBrand");
         return brandService.findAll();
     }
 }
