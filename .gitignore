@@ -5,8 +5,8 @@ out
 gen
 target
 !pom.xml
-*.properties
+zookeeper.properties
 # under * 
-!database.properties
-application.properties
-!log4j.properties
+#!database.properties
+#application.properties
+#!log4j.properties
