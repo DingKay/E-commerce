@@ -1,5 +1,6 @@
 package com.dk.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
  * @Description TODO
  * @create 2019/3/31
  */
-public class PageResult {
+public class PageResult implements Serializable {
     /**
       * 总记录数
       * @author DingKai

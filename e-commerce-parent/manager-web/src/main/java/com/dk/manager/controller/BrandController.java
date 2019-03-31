@@ -2,6 +2,7 @@ package com.dk.manager.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.dk.domain.TbBrand;
+import com.dk.entity.PageResult;
 import com.dk.sellergoods.service.BrandService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,5 +37,18 @@ public class BrandController {
     public List<TbBrand> findAllBrand(){
         System.out.println("BrandController.findAllBrand");
         return brandService.findAll();
+    }
+
+    /**
+      * 品牌分页
+      * @author DingKai
+      * @Date 2019/3/31
+      * @Param
+      * @return
+      */
+    @RequestMapping("/findPage")
+    public PageResult findPage(int page, int rows){
+        System.out.println("BrandController.findPage");
+        return brandService.findPage(page, rows);
     }
 }

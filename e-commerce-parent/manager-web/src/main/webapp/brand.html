@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>品牌管理</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+    <script src="js/pagination.js"/>
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
@@ -14,7 +16,7 @@
           crossorigin="anonymous">
     <script>
         <!--定义模块-->
-        var app = angular.module('brandApp', []);
+        var app = angular.module('brandApp', ['pagination']);
         // 定义控制器
         app.controller('brandController', function ($scope, $http) {
             //    请求后台的Controller获得初始化数据
@@ -22,12 +24,33 @@
                 $http.get("../brand/findAll.do").success(function (response) {
                     $scope.list = response;
                 })
+            };
+            $scope.paginationConf = {
+                currentPage: 1,
+                totalItems: 10,
+                itemsPerPage: 10,
+                perPageOptions: [10, 20, 30, 40, 50],
+                onChange: function(){
+                    $scope.findPage($scope.paginationConf.currentPage,$scope.paginationConf.itemsPerPage);
+                }
+            };
+
+            //    分页的方法调用
+            $scope.findPage = function (page, rows) {
+                //请求Controller
+                $http.get("../brand/findPage.do?page=" + page + "&rows=" + rows).success(
+                    function (response) {
+                        $scope.list = response.rows;
+                        //更新总记录数
+                        $scope.paginationConf.totalItems = response.total;
+                    }
+                )
             }
 
         })
     </script>
 </head>
-<body ng-app="brandApp" ng-controller="brandController" ng-init="findAll()">
+<body ng-app="brandApp" ng-controller="brandController" >
 <div>
     <h3>品牌管理</h3>
     <div>
@@ -71,6 +94,9 @@
                 </tr>
                 </tbody>
             </table>
+            <!--数据列表-->
+            <tm-pagination conf="paginationConf"></tm-pagination>
+
         </div>
     </div>
 </div>
