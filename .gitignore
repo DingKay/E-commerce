@@ -6,6 +6,7 @@ gen
 target
 !pom.xml
 zookeeper.properties
+database.properties
 # under * 
 #!database.properties
 #application.properties
