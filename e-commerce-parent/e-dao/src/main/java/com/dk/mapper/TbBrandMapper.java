@@ -2,8 +2,9 @@ package com.dk.mapper;
 
 import com.dk.domain.TbBrand;
 import com.dk.domain.TbBrandExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface TbBrandMapper {
     int countByExample(TbBrandExample example);

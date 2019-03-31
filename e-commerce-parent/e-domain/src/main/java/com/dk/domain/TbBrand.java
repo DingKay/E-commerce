@@ -1,5 +1,7 @@
 package com.dk.domain;
 
+import java.io.Serializable;
+
 /**
  * 品牌表
  * 
@@ -7,7 +9,7 @@ package com.dk.domain;
  * 
  * @date 2019-03-31
  */
-public class TbBrand {
+public class TbBrand implements Serializable {
     private Long id;
 
     private String name;

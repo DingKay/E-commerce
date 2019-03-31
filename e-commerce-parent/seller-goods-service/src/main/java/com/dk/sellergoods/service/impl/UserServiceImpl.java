@@ -16,11 +16,11 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     
     /**
+      * 测试：远程调用该方法,返回list集合
       * @author DingKai
-      * @Description TODO
       * @Date 2019/3/31
       * @Param []
-      * @return java.util.List 
+      * @return java.util.List
       */
     @Override
     public List getList() {
