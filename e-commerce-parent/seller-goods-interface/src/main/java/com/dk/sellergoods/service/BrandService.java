@@ -1,6 +1,7 @@
 package com.dk.sellergoods.service;
 
 import com.dk.domain.TbBrand;
+import com.dk.entity.PageResult;
 
 import java.util.List;
 
@@ -19,4 +20,13 @@ public interface BrandService {
       * @return java.util.List<com.dk.domain.TbBrand> 
       */
     List<TbBrand> findAll();
+
+    /**
+      * 分页的方法
+      * @author DingKai
+      * @Date 2019/3/31
+      * @Param
+      * @return
+      */
+    PageResult findPage(int pageNum, int pageSize);
 }

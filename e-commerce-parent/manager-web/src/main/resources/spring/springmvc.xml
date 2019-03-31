@@ -21,7 +21,7 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
-    <context:property-placeholder location="classpath:spring/zookeeper.properties"/>
+    <context:property-placeholder location="classpath:spring/my.properties"/>
     <!-- 引用dubbo 服务 -->
     <dubbo:application name="manager-web" />
     <dubbo:registry address="${zookeeper.server}"/>

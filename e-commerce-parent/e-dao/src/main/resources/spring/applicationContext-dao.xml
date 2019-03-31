@@ -11,16 +11,16 @@
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
     <!--读取properties文件-->
-    <context:property-placeholder location="classpath:database.properties" />
+    <context:property-placeholder location="classpath:spring/my.properties" />
     <!--数据库连接池-->
     <!--加载配置文件-->
     <!--数据库连接池-->
     <bean id = "dataSource" class="com.alibaba.druid.pool.DruidDataSource"
           destroy-method="close">
-        <property name="url" value="jdbc:mysql://rm-bp1jmuvmo3lvs7x91fo.mysql.rds.aliyuncs.com:3306/e_commerce"/>
-        <property name="username" value="root"/>
-        <property name="password" value="Kai@980217"/>
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.userName}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="driverClassName" value="${jdbc.driver}"/>
         <property name="maxActive" value="10"/>
         <property name="minIdle" value="5"/>
     </bean>
@@ -31,7 +31,7 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
         <!--加载mybatis的配置文件-->
-        <!--<property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml"/>-->
+        <property name="configLocation" value="classpath:SqlMapConfig.xml"/>
         <!--<property name="typeAliasesPackage" value="com.dk.domain"/>-->
     </bean>
 
