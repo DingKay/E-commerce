@@ -34,7 +34,7 @@ public class BrandServiceImpl implements BrandService {
     private TbBrandMapper tbBrandMapper;
 
     /**
-     * 查询所有品牌方法实现类
+     * 查询所有品牌方法实现方法
      * @author DingKai
      * @date 2019/3/31
      * @return java.util.List<com.dk.domain.TbBrand>
@@ -48,7 +48,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
     /**
-     * 分页方法实现类
+     * 分页方法实现方法
      * @author DingKai
      * @date 2019/3/31
      * @param pageNum
@@ -56,11 +56,66 @@ public class BrandServiceImpl implements BrandService {
      * @return com.dk.entity.PageResult
      */
     @Override
-    public PageResult findPage(int pageNum, int pageSize) {
+    public PageResult page(int pageNum, int pageSize) {
         logger.debug("BrandServiceImpl.findPage## 分页实现类 start");
         //使用PageHelper插件
         PageHelper.startPage(pageNum, pageSize);
         Page<TbBrand> page = (Page<TbBrand>)tbBrandMapper.selectByExample(null);
         return new PageResult(page.getTotal(), page.getResult());
+    }
+
+    /**
+     * 新增品牌实现方法
+     * @author DingKai
+     * @date 2019/4/1
+     * @param tbBrand
+     * @return void
+     * @exception 
+     */
+    @Override
+    public void add(TbBrand tbBrand) {
+        tbBrandMapper.insert(tbBrand);
+    }
+
+    /**
+     * 根据主键id更新品牌实现方法
+     * @author DingKai
+     * @date 2019/4/1
+     * @param tbBrand
+     * @return void
+     * @exception
+     */
+    @Override
+    public void update(TbBrand tbBrand) {
+        tbBrandMapper.updateByPrimaryKey(tbBrand);
+    }
+
+    /**
+     * 查询品牌实现方法
+     * @author DingKai
+     * @date 2019/4/1
+     * @param id
+     * @return com.dk.domain.TbBrand
+     * @exception
+     */
+    @Override
+    public TbBrand findOne(long id) {
+        TbBrand tbBrand = tbBrandMapper.selectByPrimaryKey(id);
+        return tbBrand;
+    }
+
+    /**
+     * 批量删除实现方法
+     * @author DingKai
+     * @date 2019/4/1
+     * @param ids
+     * @return void
+     * @exception
+     */
+    @Override
+    public void delete(long[] ids) {
+        for (long id : ids) {
+            tbBrandMapper.deleteByPrimaryKey(id);
+        }
     }
 }

@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @author DingKai
  * @Classname PageResult
- * @Description TODO
+ * @Description 分页返回对象
  * @create 2019/3/31
  */
 public class PageResult implements Serializable {
