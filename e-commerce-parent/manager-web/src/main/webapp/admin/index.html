@@ -28,12 +28,30 @@
 		  		iframeid.height =document.documentElement.clientHeight;			   	   
 			  }
 		 }
-    
-	</script>    
+         app.controller('indexController' ,function($scope,$controller   ,loginService){
+             //读取当前登录人
+             $scope.showLoginName=function(){
+                 loginService.loginName().success(
+                     function(response){
+                         $scope.loginName=response.loginName;
+                     }
+                 );
+             }
+         });
+
+         app.service('loginService',function($http){
+             //读取登录人名称
+             this.loginName=function(){
+                 return $http.get('../login/name.do');
+             }
+         });
+
+
+    </script>
  
 </head>
 
-<body class="hold-transition skin-green sidebar-mini" >
+<body class="hold-transition skin-green sidebar-mini" ng-controller="indexController" ng-init="showLoginName()">
 
     <div class="wrapper">
 
@@ -256,7 +274,7 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="../img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                <span class="hidden-xs">测试用户</span>
+                                <span class="hidden-xs">{{}}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
@@ -264,7 +282,7 @@
                                     <img src="../img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                     <p>
-                                       测试用户 - 小丁凯
+                                       测试用户 - {{}}
                                         <small>最后登录 11:20AM</small>
                                     </p>
                                 </li>
