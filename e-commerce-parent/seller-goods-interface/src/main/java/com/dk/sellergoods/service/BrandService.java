@@ -72,4 +72,16 @@ public interface BrandService {
      * @exception
      */
     void delete(long [] ids);
+
+    /**
+     * 查询并分页接口
+     * @author DingKai
+     * @date 2019/4/2
+     * @param tbBrand
+     * @param pageNum
+     * @param pageSize
+     * @return com.dk.entity.PageResult
+     * @exception 
+     */
+    PageResult findPage(TbBrand tbBrand, int pageNum, int pageSize);
 }

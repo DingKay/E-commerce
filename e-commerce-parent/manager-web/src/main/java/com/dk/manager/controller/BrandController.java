@@ -137,4 +137,21 @@ public class BrandController {
         }
         return result;
     }
+
+    /**
+     * 查询品牌并分页 
+     * @author DingKai
+     * @date 2019/4/2
+     * @param tbBrand
+     * @param page
+     * @param size
+     * @return com.dk.entity.PageResult
+     * @exception 
+     */
+    @RequestMapping("/search")
+    public PageResult search(@RequestBody TbBrand tbBrand, int page, int size){
+        PageResult pages = brandService.findPage(tbBrand, page, size);
+        logger.debug(pages.toString());
+        return pages;
+    }
 }

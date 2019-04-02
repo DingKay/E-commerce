@@ -3,6 +3,7 @@ package com.dk.sellergoods.service.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.dk.dao.TbBrandMapper;
 import com.dk.domain.TbBrand;
+import com.dk.domain.TbBrandExample;
 import com.dk.entity.PageResult;
 import com.dk.sellergoods.service.BrandService;
 import com.github.pagehelper.Page;
@@ -117,5 +118,35 @@ public class BrandServiceImpl implements BrandService {
         for (long id : ids) {
             tbBrandMapper.deleteByPrimaryKey(id);
         }
+    }
+
+    /**
+     * 查询并分页实现方法
+     * @author DingKai
+     * @date 2019/4/2
+     * @param tbBrand
+     * @param pageNum
+     * @param pageSize
+     * @return com.dk.entity.PageResult
+     * @exception
+     */
+    @Override
+    public PageResult findPage(TbBrand tbBrand, int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        //静态内部内对象创建之前需要创建外部类对象
+        TbBrandExample example=new TbBrandExample();
+        TbBrandExample.Criteria criteria = example.createCriteria();
+
+        if(tbBrand!=null){
+            if(tbBrand.getName()!=null && tbBrand.getName().length()>0){
+                criteria.andNameLike("%" + tbBrand.getName() + "%");
+            }
+            if(tbBrand.getFirstChar()!=null && tbBrand.getFirstChar().length()>0){
+                criteria.andFirstCharEqualTo(tbBrand.getFirstChar());
+            }
+        }
+
+        Page<TbBrand> page= (Page<TbBrand>)tbBrandMapper.selectByExample(example);
+        return new PageResult(page.getTotal(), page.getResult());
     }
 }

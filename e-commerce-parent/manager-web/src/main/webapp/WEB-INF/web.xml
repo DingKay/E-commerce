@@ -28,9 +28,14 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:spring/springmvc.xml</param-value>
         </init-param>
+        <!--随着tomcat的启动而初始化-->
+        <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>springmvc</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>login.html</welcome-file>
+    </welcome-file-list>
 </web-app>
