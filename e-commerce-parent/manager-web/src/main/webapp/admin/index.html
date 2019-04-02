@@ -23,32 +23,19 @@
     
     <script type="text/javascript">   
 		 function SetIFrameHeight(){
-		  	  var iframeid=document.getElementById("iframe"); //iframe id
+		  	  var iframeid = document.getElementById("iframe"); //iframe id
 		  	  if (document.getElementById){
 		  		iframeid.height =document.documentElement.clientHeight;			   	   
 			  }
 		 }
-         app.controller('indexController' ,function($scope,$controller   ,loginService){
-             //读取当前登录人
-             $scope.showLoginName=function(){
-                 loginService.loginName().success(
-                     function(response){
-                         $scope.loginName=response.loginName;
-                     }
-                 );
-             }
-         });
-
-         app.service('loginService',function($http){
-             //读取登录人名称
-             this.loginName=function(){
-                 return $http.get('../login/name.do');
-             }
-         });
-
 
     </script>
- 
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+
+    <script type="text/javascript" src="../js/base.js"></script>
+    <script type="text/javascript" src="../js/service/loginService.js"></script>
+    <script type="text/javascript" src="../js/controller/indexController.js"></script>
+
 </head>
 
 <body class="hold-transition skin-green sidebar-mini" ng-controller="indexController" ng-init="showLoginName()">
