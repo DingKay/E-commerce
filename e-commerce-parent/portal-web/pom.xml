@@ -9,9 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>manager-web</artifactId>
+    <artifactId>portal-web</artifactId>
     <packaging>war</packaging>
-
 
     <dependencies>
         <!-- Spring -->
@@ -88,7 +87,7 @@
         </dependency>
         <dependency>
             <groupId>com.dk.platform</groupId>
-            <artifactId>seller-goods-interface</artifactId>
+            <artifactId>e-content-interface</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -102,18 +101,8 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.21</version>
         </dependency>
-        <!-- 身份验证 -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <!-- 配置Tomcat插件 -->
@@ -122,10 +111,9 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <configuration>
                     <path>/</path>
-                    <port>9102</port>
+                    <port>8002</port>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>

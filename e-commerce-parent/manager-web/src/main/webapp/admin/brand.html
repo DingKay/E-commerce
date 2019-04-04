@@ -68,7 +68,7 @@
 			//判断字符长度共用方法
 			var str = function(length) {
 				var len = false;
-				if (length.charCodeAt(2)) {
+				if (length.charCodeAt(2) || length >= 10) {
 					len = true;
 				}
 				return len;

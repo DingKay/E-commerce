@@ -15,6 +15,9 @@
         <module>seller-goods-service</module>
         <module>shop-web</module>
         <module>manager-web</module>
+        <module>portal-web</module>
+        <module>e-content-interface</module>
+        <module>e-content-service</module>
     </modules>
 
     <packaging>pom</packaging>
