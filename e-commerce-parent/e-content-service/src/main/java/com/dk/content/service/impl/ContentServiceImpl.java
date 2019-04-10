@@ -1,7 +1,6 @@
 package com.dk.content.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.alibaba.dubbo.remoting.TimeoutException;
 import com.dk.content.service.ContentService;
 import com.dk.dao.TbContentMapper;
 import com.dk.domain.TbContent;

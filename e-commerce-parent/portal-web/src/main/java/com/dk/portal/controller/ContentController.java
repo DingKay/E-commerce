@@ -26,6 +26,7 @@ public class ContentController {
 
     @RequestMapping("/findContentByCategoryId")
     public List<TbContent> findContentByCategoryId(long categoryId){
+        System.out.println("ContentController.findContentByCategoryId");
         return contentService.findContentByCategoryId(categoryId);
     }
 }
