@@ -17,11 +17,11 @@ import java.util.Map;
 @RequestMapping("/login")
 public class LoginController {
 
-    @RequestMapping("/name")
+    @RequestMapping("/showName")
     public Map name(){
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         Map map = new HashMap();
-        System.out.println("LoginController.name start");
+        System.out.println("LoginController.name start  " + name);
         map.put("loginName", name);
         return map;
     }

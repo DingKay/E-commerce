@@ -17,35 +17,13 @@
     <script type="text/javascript" src="./plugins/angularjs/angular.min.js"></script>
     <!-- 引入分页相关的JS和CSS -->
     
-    <!--<script type="text/javascript" src="./js/base.js"></script>-->
-    <!--<script type="text/javascript" src="./js/service/contentService.js"></script>-->
-    <!--<script type="text/javascript" src="./js/controller/contentController.js"></script>-->
-
-	<script type="text/javascript">
-		//1 定义模块
-		//在[]里面添加分页模块，名称是固定的pagination
-		var app = angular.module('contentApp',[]);
-
-		//定义控制器
-		app.controller('contentController',function($scope,$http) {
-
-			$scope.contentList=[];
-			//请求后台的controller得到返回的数据
-			$scope.findByCategoryId=function(categoryId){
-				$http.get('content/findContentByCategoryId.do?categoryId='+categoryId).success(
-						function(response) {
-							// alert(response);
-							$scope.contentList[categoryId]=response;
-						}
-				)
-			};
-		})
-
-	</script>
-
+    <script type="text/javascript" src="./js/base.js"></script>
+    <script type="text/javascript" src="./js/service/contentService.js"></script>
+    <script type="text/javascript" src="./js/controller/contentController.js"></script>
+   
 </head>
 
-<body ng-app="contentApp" ng-controller="contentController" ng-init="findByCategoryId(1)">
+<body ng-app="pinyougou" ng-controller="contentController" ng-init="findByCategoryId(1)">
 	<!-- 头部栏位 -->
 	<!--页面顶部-->
 <div id="nav-bottom">
@@ -140,7 +118,7 @@
 						<ul class="nav">
 							<li class="f-item">服装城</li>
 							<li class="f-item">美妆馆</li>
-							<li class="f-item">品优超市</li>
+							<li class="f-item">网上超市</li>
 							<li class="f-item">全球购</li>
 							<li class="f-item">闪购</li>
 							<li class="f-item">团购</li>
@@ -825,7 +803,7 @@
 	<div class="fun">
 		<div class="py-container">
 			<div class="title">
-				<h3 class="fl">传智播客.有趣区</h3>
+				<h3 class="fl">有趣区</h3>
 			</div>
 			<div class="clearfix yui3-g Interest">
 				<span class="x-line"></span>
@@ -1240,8 +1218,8 @@
 					<li>友情链接<span class="space"></span></li>
 					<li>关于我们</li>
 				</ul>
-				<p>地址：北京市昌平区建材城西路金燕龙办公楼一层 邮编：100096 电话：400-618-4000 传真：010-82935100</p>
-				<p>京ICP备08001421号京公网安备110108007702</p>
+				<p>地址：南京科技职业技术学院</p>
+				<p>电话：1234567890</p>
 			</div>
 		</div>
 	</div>
