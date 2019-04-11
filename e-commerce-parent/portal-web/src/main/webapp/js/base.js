@@ -1,2 +1,2 @@
-//创建angular模块
-var app = angular.module('portal', ['pagination']);
+// 定义模块:
+var app = angular.module("pinyougou",[]);
