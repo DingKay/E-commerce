@@ -15,7 +15,7 @@ import java.util.Map;
  * @create 2019/4/11
  */
 @RestController
-@RequestMapping("/itemsearch")
+@RequestMapping("/searchItem")
 public class ItemSearchController {
 
     /**
@@ -26,8 +26,9 @@ public class ItemSearchController {
 
     @RequestMapping("/search")
     public Map<String, Object> search(@RequestBody Map searchMap) {
-        System.out.println("ItemSearchController.search");
-        return itemSearchService.search(searchMap);
+        Map<String, Object> search = itemSearchService.search(searchMap);
+        System.out.println("ItemSearchController.search " + search);
+        return search;
     }
 
 }
