@@ -8,6 +8,7 @@ import com.dk.domain.TbContentExample;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.List;
 
@@ -31,32 +32,46 @@ public class ContentServiceImpl implements ContentService {
     @Autowired
     private TbContentMapper tbContentMapper;
 
+    /**
+     * Redis缓存对象
+     */
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     /**
      * 根据产品分类Id查询广告信息实现方法
-     * @author DingKai
-     * @date 2019/4/4
+     *
      * @param categoryId
      * @return java.util.List<com.dk.domain.TbContent>
-     * @exception 
+     * @throws
+     * @author DingKai
+     * @date 2019/4/4
      */
     @Override
     public List<TbContent> findContentByCategoryId(long categoryId) {
-        //返回值
-        List<TbContent> tbContents = null;
-        TbContentExample example = new TbContentExample();
-        TbContentExample.Criteria criteria = example.createCriteria();
-        //拼接条件 类别id
-        criteria.andCategoryIdEqualTo(categoryId);
-        //拼接条件 状态1表示可使用
-        criteria.andStatusEqualTo("1");
-        //拼接条件 排序
-        example.setOrderByClause("sort_order");
-        try {
-            tbContents = tbContentMapper.selectByExample(example);
-        } catch (Exception e){
-            logger.error(e.getMessage(), e);
+        //从redis中读取广告信息，如果不存在，则从数据库中读取数据
+        List<TbContent> contentList = (List<TbContent>) redisTemplate.boundHashOps("content").get(categoryId);
+        if (contentList == null) {
+            //返回值
+            TbContentExample example = new TbContentExample();
+            TbContentExample.Criteria criteria = example.createCriteria();
+            //拼接条件 类别id
+            criteria.andCategoryIdEqualTo(categoryId);
+            //拼接条件 状态1表示可使用
+            criteria.andStatusEqualTo("1");
+            //拼接条件 排序
+            example.setOrderByClause("sort_order");
+            try {
+                contentList = tbContentMapper.selectByExample(example);
+            } catch (Exception e) {
+                logger.error(e.getMessage(), e);
+            }
+            //存入缓存
+            redisTemplate.boundHashOps("content").put(categoryId, contentList);
+        } else {
+            System.out.println("从缓存读取数据");
         }
-        return tbContents;
+
+        return contentList;
     }
 }

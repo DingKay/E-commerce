@@ -34,7 +34,7 @@
 			$scope.findByCategoryId=function(categoryId){
 				$http.get('content/findContentByCategoryId.do?categoryId='+categoryId).success(
 						function(response) {
-							alert(response);
+							// alert(response);
 							$scope.contentList[categoryId]=response;
 						}
 				)

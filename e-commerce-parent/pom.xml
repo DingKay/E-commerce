@@ -18,6 +18,8 @@
         <module>portal-web</module>
         <module>e-content-interface</module>
         <module>e-content-service</module>
+        <module>e-search-interface</module>
+        <module>e-search-service</module>
     </modules>
 
     <packaging>pom</packaging>

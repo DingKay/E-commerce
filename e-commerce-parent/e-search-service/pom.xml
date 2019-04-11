@@ -9,10 +9,16 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>e-content-service</artifactId>
+    <artifactId>e-search-service</artifactId>
     <packaging>war</packaging>
 
     <dependencies>
+        <!--搜索接口-->
+        <dependency>
+            <groupId>com.dk.platform</groupId>
+            <artifactId>e-search-interface</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -84,26 +90,6 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.dk.platform</groupId>
-            <artifactId>e-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.dk.platform</groupId>
-            <artifactId>e-dao</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.dk.platform</groupId>
-            <artifactId>e-content-interface</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.dk.platform</groupId>
-            <artifactId>e-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
         <!--日志依赖-->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -119,7 +105,7 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <configuration>
                     <path>/</path>
-                    <port>8001</port>
+                    <port>9004</port>
                 </configuration>
             </plugin>
         </plugins>
