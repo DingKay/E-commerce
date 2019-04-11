@@ -83,7 +83,7 @@ public class GoodsDescServiceImpl implements GoodsDescService {
 		PageHelper.startPage(pageNum, pageSize);
 		
 		TbGoodsDescExample example=new TbGoodsDescExample();
-		Criteria criteria = example.createCriteria();
+		TbGoodsDescExample.Criteria criteria = example.createCriteria();
 		
 		if(goodsDesc!=null){			
 						if(goodsDesc.getIntroduction()!=null && goodsDesc.getIntroduction().length()>0){

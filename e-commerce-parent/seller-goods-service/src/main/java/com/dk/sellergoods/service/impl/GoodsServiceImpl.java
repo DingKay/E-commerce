@@ -5,6 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.dk.dao.*;
+import com.dk.domain.*;
+import com.dk.domain.group.Goods;
+import com.dk.entity.PageResult;
+import com.dk.sellergoods.service.GoodsService;
 import org.apache.solr.common.util.Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,25 +18,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.pinyougou.mapper.TbBrandMapper;
-import com.pinyougou.mapper.TbGoodsDescMapper;
-import com.pinyougou.mapper.TbGoodsMapper;
-import com.pinyougou.mapper.TbItemCatMapper;
-import com.pinyougou.mapper.TbItemMapper;
-import com.pinyougou.mapper.TbSellerMapper;
-import com.pinyougou.pojo.TbBrand;
-import com.pinyougou.pojo.TbGoods;
-import com.pinyougou.pojo.TbGoodsDesc;
-import com.pinyougou.pojo.TbGoodsExample;
-import com.pinyougou.pojo.TbGoodsExample.Criteria;
-import com.pinyougou.pojo.TbItem;
-import com.pinyougou.pojo.TbItemCat;
-import com.pinyougou.pojo.TbItemExample;
-import com.pinyougou.pojo.TbSeller;
-import com.pinyougou.pojo.group.Goods;
-import com.pinyougou.sellergoods.service.GoodsService;
 
-import entity.PageResult;
 
 /**
  * 服务实现层
@@ -170,7 +157,7 @@ public class GoodsServiceImpl implements GoodsService {
 		// 先删除，再保存:
 		// 删除SKU的信息:
 		TbItemExample example = new TbItemExample();
-		com.pinyougou.pojo.TbItemExample.Criteria criteria = example.createCriteria();
+		TbItemExample.Criteria criteria = example.createCriteria();
 		criteria.andGoodsIdEqualTo(goods.getGoods().getId());
 		itemMapper.deleteByExample(example);
 		// 保存SKU的信息
@@ -194,7 +181,7 @@ public class GoodsServiceImpl implements GoodsService {
 		
 		// 查询SKU表的信息:
 		TbItemExample example = new TbItemExample();
-		com.pinyougou.pojo.TbItemExample.Criteria criteria = example.createCriteria();
+		TbItemExample.Criteria criteria = example.createCriteria();
 		criteria.andGoodsIdEqualTo(id);
 		List<TbItem> list = itemMapper.selectByExample(example);
 		goods.setItemList(list);
@@ -221,7 +208,7 @@ public class GoodsServiceImpl implements GoodsService {
 		PageHelper.startPage(pageNum, pageSize);
 		
 		TbGoodsExample example=new TbGoodsExample();
-		Criteria criteria = example.createCriteria();
+		TbGoodsExample.Criteria criteria = example.createCriteria();
 		
 		criteria.andIsDeleteIsNull();
 		
@@ -275,10 +262,11 @@ public class GoodsServiceImpl implements GoodsService {
 	 * @param status
 	 * @return
 	 */
+	@Override
 	public List<TbItem>	findItemListByGoodsIdListAndStatus(Long []goodsIds,String status){
 		
 		TbItemExample example=new TbItemExample();
-		com.pinyougou.pojo.TbItemExample.Criteria criteria = example.createCriteria();
+		TbItemExample.Criteria criteria = example.createCriteria();
 		criteria.andStatusEqualTo(status);//状态
 		criteria.andGoodsIdIn( Arrays.asList(goodsIds));//指定条件：SPUID集合
 		

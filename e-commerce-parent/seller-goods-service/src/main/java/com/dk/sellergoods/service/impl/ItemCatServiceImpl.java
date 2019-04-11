@@ -1,18 +1,17 @@
 package com.dk.sellergoods.service.impl;
 import java.util.List;
+
+import com.dk.dao.TbItemCatMapper;
+import com.dk.domain.TbItemCat;
+import com.dk.domain.TbItemCatExample;
+import com.dk.entity.PageResult;
+import com.dk.sellergoods.service.ItemCatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.pinyougou.mapper.TbItemCatMapper;
-import com.pinyougou.pojo.TbItemCat;
-import com.pinyougou.pojo.TbItemCatExample;
-import com.pinyougou.pojo.TbItemCatExample.Criteria;
-import com.pinyougou.sellergoods.service.ItemCatService;
-
-import entity.PageResult;
 
 /**
  * 服务实现层
@@ -86,7 +85,7 @@ public class ItemCatServiceImpl implements ItemCatService {
 		PageHelper.startPage(pageNum, pageSize);
 		
 		TbItemCatExample example=new TbItemCatExample();
-		Criteria criteria = example.createCriteria();
+		TbItemCatExample.Criteria criteria = example.createCriteria();
 		
 		if(itemCat!=null){			
 						if(itemCat.getName()!=null && itemCat.getName().length()>0){
@@ -105,7 +104,7 @@ public class ItemCatServiceImpl implements ItemCatService {
 	@Override
 	public List<TbItemCat> findByParentId(Long parentId) {
 		TbItemCatExample example = new TbItemCatExample();
-		Criteria criteria = example.createCriteria();
+		TbItemCatExample.Criteria criteria = example.createCriteria();
 		// 设置条件:
 		criteria.andParentIdEqualTo(parentId);
 		// 条件查询

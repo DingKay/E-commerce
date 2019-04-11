@@ -1,10 +1,11 @@
 package com.dk.domain.group;
 
+import com.dk.domain.TbSpecification;
+import com.dk.domain.TbSpecificationOption;
+
 import java.io.Serializable;
 import java.util.List;
 
-import com.pinyougou.pojo.TbSpecification;
-import com.pinyougou.pojo.TbSpecificationOption;
 
 /**
  * 组合实体类

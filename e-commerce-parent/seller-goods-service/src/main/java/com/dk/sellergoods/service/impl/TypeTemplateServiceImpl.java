@@ -2,6 +2,14 @@ package com.dk.sellergoods.service.impl;
 import java.util.List;
 import java.util.Map;
 
+import com.dk.dao.TbSpecificationOptionMapper;
+import com.dk.dao.TbTypeTemplateMapper;
+import com.dk.domain.TbSpecificationOption;
+import com.dk.domain.TbSpecificationOptionExample;
+import com.dk.domain.TbTypeTemplate;
+import com.dk.domain.TbTypeTemplateExample;
+import com.dk.entity.PageResult;
+import com.dk.sellergoods.service.TypeTemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 
@@ -9,16 +17,6 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.pinyougou.mapper.TbSpecificationOptionMapper;
-import com.pinyougou.mapper.TbTypeTemplateMapper;
-import com.pinyougou.pojo.TbSpecificationOption;
-import com.pinyougou.pojo.TbSpecificationOptionExample;
-import com.pinyougou.pojo.TbTypeTemplate;
-import com.pinyougou.pojo.TbTypeTemplateExample;
-import com.pinyougou.pojo.TbTypeTemplateExample.Criteria;
-import com.pinyougou.sellergoods.service.TypeTemplateService;
-
-import entity.PageResult;
 
 /**
  * 服务实现层
@@ -92,7 +90,7 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
 		PageHelper.startPage(pageNum, pageSize);
 		
 		TbTypeTemplateExample example=new TbTypeTemplateExample();
-		Criteria criteria = example.createCriteria();
+		TbTypeTemplateExample.Criteria criteria = example.createCriteria();
 		
 		if(typeTemplate!=null){			
 						if(typeTemplate.getName()!=null && typeTemplate.getName().length()>0){
@@ -157,7 +155,7 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
 				// 根据规格的ID 查询规格选项的数据:
 				// 设置查询条件:
 				TbSpecificationOptionExample example = new TbSpecificationOptionExample();
-				com.pinyougou.pojo.TbSpecificationOptionExample.Criteria criteria = example.createCriteria();
+				TbSpecificationOptionExample.Criteria criteria = example.createCriteria();
 				criteria.andSpecIdEqualTo(new Long((Integer)map.get("id")));
 				
 				List<TbSpecificationOption> specOptionList = specificationOptionMapper.selectByExample(example);
