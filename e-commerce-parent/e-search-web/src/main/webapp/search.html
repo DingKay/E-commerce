@@ -34,7 +34,7 @@
 		</script>
 	</head>
 
-	<body ng-app="searchApp" ng-controller="searchController" ng-init="loadkeywords()">
+	<body ng-app="searchApp" ng-controller="searchController">
 		<!-- 头部栏位 -->
 		<!--页面顶部-->
 		<div id="nav-bottom">
@@ -89,8 +89,8 @@
 				<div class="header">
 					<div class="py-container">
 						<div class="yui3-g Logo">
-							<div class="yui3-u Left logoArea">
-								<a class="logo-bd" title="网上商城" href="JD-index.html" target="_blank"></a>
+							<div class="yui3-u Left">
+								<a title="网上商城" href="JD-index.html" target="_blank">网上商城</a>
 							</div>
 							<div class="yui3-u Center searchArea">
 								<div class="search">
@@ -300,7 +300,7 @@
 				</div>
 				<div class="goods-list">
 					<ul class="yui3-g">
-						<li class="yui3-u-1-5" ng-repeat="item in resultMap.rows">
+						<li class="yui3-u-1-5" ng-repeat="item in list.rows">
 							<div class="list-wrap">
 								<div class="p-img">
 									<a href="http://localhost:9105/{{item.id}}.html" target="_blank"><img src="{{item.image}}" /></a>

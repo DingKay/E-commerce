@@ -22,6 +22,7 @@
         <module>e-search-service</module>
         <module>e-search-web</module>
         <module>e-solr-util</module>
+        <module>e-config</module>
     </modules>
 
     <packaging>pom</packaging>
