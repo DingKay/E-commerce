@@ -1,7 +1,14 @@
 package com.dk.domain;
 
 import java.io.Serializable;
-
+/**
+ * 广告表
+ * @author DingKai
+ * @date 2019/4/11
+ * @param null
+ * @return
+ * @exception
+ */
 public class TbContent implements Serializable{
     private Long id;
 

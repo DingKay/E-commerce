@@ -20,6 +20,8 @@
         <module>e-content-service</module>
         <module>e-search-interface</module>
         <module>e-search-service</module>
+        <module>e-search-web</module>
+        <module>e-solr-util</module>
     </modules>
 
     <packaging>pom</packaging>

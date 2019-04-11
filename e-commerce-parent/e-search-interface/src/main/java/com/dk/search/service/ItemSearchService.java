@@ -11,7 +11,12 @@ import java.util.Map;
 public interface ItemSearchService {
     
     /**
-     * 搜索
+     * 搜索接口方法
+     * @author DingKai
+     * @date 2019/4/11
+     * @param searchMap
+     * @return java.util.Map<java.lang.String,java.lang.Object>
+     * @exception
      */
     Map<String, Object> search(Map searchMap);
 }
