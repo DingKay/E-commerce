@@ -1,5 +1,6 @@
 package com.dk.search.service;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,4 +20,11 @@ public interface ItemSearchService {
      * @exception
      */
     Map<String, Object> search(Map searchMap);
+
+
+    /**
+     * 删除商品列表
+     * @param goodsIds  (SPU)
+     */
+    void deleteByGoodsIds(List goodsIds);
 }

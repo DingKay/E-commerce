@@ -15,7 +15,7 @@ import java.util.Map;
  * @create 2019/4/11
  */
 @RestController
-@RequestMapping("/searchItem")
+@RequestMapping("/itemsearch")
 public class ItemSearchController {
 
     /**

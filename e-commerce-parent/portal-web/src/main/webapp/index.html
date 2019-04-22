@@ -17,35 +17,13 @@
     <script type="text/javascript" src="./plugins/angularjs/angular.min.js"></script>
     <!-- 引入分页相关的JS和CSS -->
     
-    <!--<script type="text/javascript" src="./js/base.js"></script>-->
-    <!--<script type="text/javascript" src="./js/service/contentService.js"></script>-->
-    <!--<script type="text/javascript" src="./js/controller/contentController.js"></script>-->
-
-	<script type="text/javascript">
-		//1 定义模块
-		//在[]里面添加分页模块，名称是固定的pagination
-		var app = angular.module('contentApp',[]);
-
-		//定义控制器
-		app.controller('contentController',function($scope,$http) {
-
-			$scope.contentList=[];
-			//请求后台的controller得到返回的数据
-			$scope.findByCategoryId=function(categoryId){
-				$http.get('content/findContentByCategoryId.do?categoryId='+categoryId).success(
-						function(response) {
-							// alert(response);
-							$scope.contentList[categoryId]=response;
-						}
-				)
-			};
-		})
-
-	</script>
-
+    <script type="text/javascript" src="./js/base.js"></script>
+    <script type="text/javascript" src="./js/service/contentService.js"></script>
+    <script type="text/javascript" src="./js/controller/contentController.js"></script>
+   
 </head>
 
-<body ng-app="contentApp" ng-controller="contentController" ng-init="findByCategoryId(1)">
+<body ng-app="pinyougou" ng-controller="contentController" ng-init="findByCategoryId(1)">
 	<!-- 头部栏位 -->
 	<!--页面顶部-->
 <div id="nav-bottom">
@@ -140,7 +118,7 @@
 						<ul class="nav">
 							<li class="f-item">服装城</li>
 							<li class="f-item">美妆馆</li>
-							<li class="f-item">品优超市</li>
+							<li class="f-item">网上超市</li>
 							<li class="f-item">全球购</li>
 							<li class="f-item">闪购</li>
 							<li class="f-item">团购</li>

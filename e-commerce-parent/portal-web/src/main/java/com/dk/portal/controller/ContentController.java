@@ -24,7 +24,7 @@ public class ContentController {
     @Reference
     private ContentService contentService;
 
-    @RequestMapping("/findContentByCategoryId")
+    @RequestMapping("/findByCategoryId")
     public List<TbContent> findContentByCategoryId(long categoryId){
         System.out.println("ContentController.findContentByCategoryId");
         return contentService.findContentByCategoryId(categoryId);
