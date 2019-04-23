@@ -11,6 +11,7 @@
     <context:property-placeholder location="classpath:spring/my.properties"/>
     <dubbo:protocol name="dubbo" port="20881"></dubbo:protocol>
     <dubbo:application name="seller-goods-service"/>
-    <dubbo:registry address="${zookeeper.server}"/>
+    <dubbo:registry address="${zookeeper.server}" timeout="30000"/>
     <dubbo:annotation package="com.dk.sellergoods.service.impl" />
+    <dubbo:consumer id="default-consumer" default="true" check="false" timeout="30000" retries="0"/>
 </beans>
